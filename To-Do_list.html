@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .container {
+      max-width: 500px;
+      margin: 50px auto;
+    }
+
+    .card {
+      border-radius: 10px;
+    }
+
+    .card-header {
+      background-color: black;
+      color: #fff;
+      border-bottom: none;
+    }
+
+    .btn-add {
+      background-color: black;
+      color: #fff;
+    }
+
+    .btn-add:hover {
+      background-color: black;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">To-Do List</h5>
+      </div>
+      <div class="card-body">
+        <ul class="list-group" id="todo-list">
+          <!-- List items will be dynamically added here -->
+        </ul>
+      </div>
+      <div class="card-footer">
+        <div class="input-group">
+          <input type="text" class="form-control" id="todo-input" placeholder="Enter a task...">
+          <div class="input-group-append">
+            <button class="btn btn-add" type="button" onclick="addTodo()">Add Task</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var counter = 1;
+
+    function addTodo() {
+      var input = document.getElementById("todo-input").value;
+      if (input.trim() !== "") {
+        var list = document.getElementById("todo-list");
+        var listItem = document.createElement("li");
+        listItem.className = "list-group-item";
+        listItem.textContent = counter + ". " + input;
+        list.appendChild(listItem);
+        document.getElementById("todo-input").value = "";
+        counter++;
+      } else {
+        alert("Please enter a task.");
+      }
+    }
+  </script>
+</body>
+</html>
